@@ -4,7 +4,7 @@ import discord
 from discord import app_commands
 from datetime import datetime, timezone
 
-from bot.config import FOOTER_TEXT
+from config import FOOTER_TEXT
 
 
 def setup(bot):

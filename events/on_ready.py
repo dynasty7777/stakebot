@@ -1,7 +1,7 @@
 # events/on_ready.py
 
 import discord
-from bot.config import BOT_STATUS
+from config import BOT_STATUS
 
 async def on_ready():
     """

@@ -3,10 +3,10 @@
 import discord
 from discord import app_commands
 
-from bot.views import MeetingPollView
-from bot.checks import has_meeting_permission
+from views import MeetingPollView
+from checks import has_meeting_permission
 
-from bot.config import FOOTER_TEXT
+from config import FOOTER_TEXT
 
 
 def setup(bot):

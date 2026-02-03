@@ -4,8 +4,8 @@ import discord
 from discord import app_commands
 from datetime import datetime, timezone
 
-from bot.config import FOOTER_TEXT
-from bot.views import KickFromDiscordView
+from config import FOOTER_TEXT
+from views import KickFromDiscordView
 
 
 def setup(bot):

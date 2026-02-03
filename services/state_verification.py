@@ -3,7 +3,7 @@
 import discord
 from typing import Tuple
 
-from bot.config import STATE_FACTIONS
+from config import STATE_FACTIONS
 
 
 async def verify_state_faction(

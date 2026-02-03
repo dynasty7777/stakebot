@@ -3,8 +3,8 @@
 import discord
 from discord import app_commands
 
-from bot.config import STATE_CHANNEL_ID, FOOTER_TEXT
-from bot.views.state_roles_view import StateRolesView
+from config import STATE_CHANNEL_ID, FOOTER_TEXT
+from views.state_roles_view import StateRolesView
 
 
 def setup(bot: discord.Client):

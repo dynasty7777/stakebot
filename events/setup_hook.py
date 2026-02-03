@@ -1,7 +1,7 @@
 # events/setup_hook.py
 
 import discord
-from bot.config import GUILD_IDS
+from config import GUILD_IDS
 
 async def setup_hook(bot):
     """

@@ -3,12 +3,12 @@
 import discord
 from discord import ui, Interaction
 
-from bot.config import (
+from config import (
     STATE_FACTIONS,
     STATE_MAIN_GUILD_ID,
     STATE_MEMBER_ROLE_ID,
 )
-from bot.services.state_verification import verify_state_faction
+from services.state_verification import verify_state_faction
 
 
 class StateFactionSelect(ui.Select):
