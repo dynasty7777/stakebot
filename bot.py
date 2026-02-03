@@ -5,8 +5,8 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
-from bot.config import GUILD_IDS, BOT_STATUS
-from bot.commands import setup_commands
+from config import GUILD_IDS, BOT_STATUS
+from commands import setup_commands
 
 load_dotenv()
 
