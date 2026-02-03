@@ -6,7 +6,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from config import GUILD_IDS, BOT_STATUS
-from commands import setup_commands
+from commands.loader import setup_commands
 
 load_dotenv()
 
