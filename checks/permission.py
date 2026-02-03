@@ -2,7 +2,7 @@
 
 import discord
 from discord import app_commands
-from bot.config import ALLOWED_ROLE_IDS
+from config import ALLOWED_ROLE_IDS
 
 
 def has_meeting_permission():
