@@ -4,8 +4,7 @@ from datetime import datetime, timezone
 from config import FOOTER_TEXT
 
 
-async def setup(bot):
-
+def setup(bot):   # ← НЕ async
     @bot.tree.command(name="gnews", description="Державна хвиля")
     @app_commands.describe(
         час="Час ефіру",
@@ -23,25 +22,14 @@ async def setup(bot):
             color=discord.Color.gold(),
         )
 
-        embed.add_field(
-            name="⚡ Фракція:",
-            value=f"**{фракція}**",
-            inline=False
-        )
-
-        embed.add_field(
-            name="🕒 Час ефіру:",
-            value=f"**{час}**",
-            inline=False
-        )
+        embed.add_field(name="⚡ Фракція:", value=f"**{фракція}**", inline=False)
+        embed.add_field(name="🕒 Час ефіру:", value=f"**{час}**", inline=False)
 
         embed.add_field(
             name="🔊 Повідомлення",
             value=(
-                "На цей час державна хвиля **зайнята для проведення "
-                "офіційних звернень.**\n"
-                "Будь ласка, **не порушуйте Закон «Про державну хвилю "
-                "штату Сан-Андреас».**"
+                "На цей час державна хвиля **зайнята для проведення офіційних звернень.**\n"
+                "Будь ласка, **не порушуйте Закон «Про державну хвилю штату Сан-Андреас».**"
             ),
             inline=False
         )
@@ -52,13 +40,8 @@ async def setup(bot):
             inline=False
         )
 
-        embed.set_thumbnail(
-            url="https://cdn-icons-png.flaticon.com/512/747/747376.png"
-        )
-
         embed.set_footer(
-            text=f"{FOOTER_TEXT} • {now.strftime('%d/%m/%Y %H:%M')}",
-            icon_url=interaction.guild.icon.url if interaction.guild.icon else None
+            text=f"{FOOTER_TEXT} • {now.strftime('%d/%m/%Y %H:%M')}"
         )
 
         await interaction.response.send_message(embed=embed)
