@@ -7,7 +7,7 @@ from views.family_tickets_view import CreateTicketView
 
 @app_commands.command(
     name="send_family_tickets",
-    description="Надіслати панель тикетів у канал Family"
+    description="Надіслати панель тікетів у канал Family"
 )
 @app_commands.default_permissions(administrator=True)
 async def send_family_tickets(interaction: discord.Interaction):
@@ -22,23 +22,23 @@ async def send_family_tickets(interaction: discord.Interaction):
 
     if not isinstance(channel, discord.TextChannel):
         await interaction.response.send_message(
-            "Канал для панелі тикетів не знайдено. Перевір FAMILY_TICKET_PANEL_CHANNEL_ID.",
+            "error",
             ephemeral=True
         )
         return
 
     embed = discord.Embed(
-        title="🎫 Family Support",
+        title="🎫 Сімейна підтримка",
         description=(
-            "Натисни кнопку нижче, щоб створити тикет.\n\n"
-            "Для тебе буде створено приватний канал, який бачитимеш ти та staff."
+            "Натисни кнопку нижче, щоб створити звернення\n\n"
+            "Буде створено канал, у котрий будете додані Ви, та адміністратори."
         ),
         color=discord.Color.blurple()
     )
 
     await channel.send(embed=embed, view=CreateTicketView())
     await interaction.response.send_message(
-        f"Панель тикетів відправлена в {channel.mention}",
+        f"Панель відправлена в {channel.mention}",
         ephemeral=True
     )
 

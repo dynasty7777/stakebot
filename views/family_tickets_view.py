@@ -67,7 +67,7 @@ class DeleteTicketView(discord.ui.View):
         is_staff = any(role.id in FAMILY_TICKET_STAFF_ROLE_IDS for role in member.roles)
         if not is_staff:
             await interaction.response.send_message(
-                "Видаляти тикети може лише staff.",
+                "Видаляти тзвернення може виключно адміністратор.",
                 ephemeral=True
             )
             return
@@ -75,13 +75,13 @@ class DeleteTicketView(discord.ui.View):
         channel = interaction.channel
 
         await interaction.response.send_message(
-            "Видаляю тикет...",
+            "Видаляю тікет...",
             ephemeral=True
         )
 
         embed = discord.Embed(
             title="🗑 Ticket Deleted",
-            description=f"Тикет `{channel.name}` видалив {interaction.user.mention}",
+            description=f"звернення `{channel.name}` видалив {interaction.user.mention}",
             color=discord.Color.red()
         )
         await send_ticket_log(interaction.guild, embed)
@@ -135,13 +135,13 @@ class CloseTicketView(discord.ui.View):
                     read_message_history=False
                 )
             except Exception as e:
-                print(f"[FamilyTickets] Не вдалося змінити права owner: {e}")
+                print(f"[FamilyTickets]: {e}")
 
         embed = discord.Embed(
             title="🔒 Ticket Closed",
             description=(
-                f"Тикет закрив {interaction.user.mention}.\n\n"
-                f"Якщо питання вирішене — staff може видалити тикет кнопкою нижче."
+                f"Тікет закрив {interaction.user.mention}.\n\n"
+                f"Якщо питання вирішене - Адміністратор може видалити тікет кнопкою нижче."
             ),
             color=discord.Color.orange()
         )
@@ -153,7 +153,7 @@ class CloseTicketView(discord.ui.View):
 
         log_embed = discord.Embed(
             title="🔒 Ticket Closed",
-            description=f"Тикет `{channel.name}` закрив {interaction.user.mention}",
+            description=f"Тікет `{channel.name}` закрив {interaction.user.mention}",
             color=discord.Color.orange()
         )
         await send_ticket_log(guild, log_embed)
@@ -187,7 +187,7 @@ class CreateTicketView(discord.ui.View):
         category = guild.get_channel(FAMILY_TICKET_CATEGORY_ID)
         if not isinstance(category, discord.CategoryChannel):
             await interaction.response.send_message(
-                "Категорія тикетів не знайдена. Перевір FAMILY_TICKET_CATEGORY_ID.",
+                "error",
                 ephemeral=True
             )
             return
@@ -196,7 +196,7 @@ class CreateTicketView(discord.ui.View):
         for ch in category.channels:
             if isinstance(ch, discord.TextChannel) and ch.topic == f"ticket_owner_id:{member.id}":
                 await interaction.response.send_message(
-                    f"У тебе вже є відкритий тикет: {ch.mention}",
+                    f"У тебе вже є активне звернення: {ch.mention}",
                     ephemeral=True
                 )
                 return
@@ -230,7 +230,7 @@ class CreateTicketView(discord.ui.View):
         except Exception as e:
             print(f"[FamilyTickets] Не вдалося створити канал: {e}")
             await interaction.response.send_message(
-                "Не вдалося створити тикет.",
+                "Не вдалося створити тікет.",
                 ephemeral=True
             )
             return
@@ -238,7 +238,7 @@ class CreateTicketView(discord.ui.View):
         embed = discord.Embed(
             title="🎫 Family Ticket",
             description=(
-                f"{member.mention}, твій тикет створено.\n\n"
+                f"{member.mention}, твій тікет створено.\n\n"
                 f"Опиши свою проблему або питання одним повідомленням.\n"
                 f"Коли питання буде вирішене — натисни **Close Ticket**."
             ),
@@ -258,12 +258,12 @@ class CreateTicketView(discord.ui.View):
 
         log_embed = discord.Embed(
             title="🎫 Ticket Created",
-            description=f"Тикет {ticket_channel.mention} створив {member.mention}",
+            description=f"Звернення {ticket_channel.mention} створив {member.mention}",
             color=discord.Color.green()
         )
         await send_ticket_log(guild, log_embed)
 
         await interaction.response.send_message(
-            f"Тикет створено: {ticket_channel.mention}",
+            f"Звернення створено: {ticket_channel.mention}",
             ephemeral=True
         )
