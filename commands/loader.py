@@ -9,6 +9,7 @@ from .hiring_no_discord import setup as hiring_no_discord_setup
 from .reports import setup as report_setup
 from .state_roles_message import setup as state_roles_message_setup
 from .gnews import setup as gnews_setup
+from .family_tickets import setup as tickets
 
 def setup_commands(bot):
     promotion_setup(bot)
@@ -22,3 +23,4 @@ def setup_commands(bot):
     report_setup(bot)
     state_roles_message_setup(bot)
     gnews_setup(bot)
+    tickets(bot)
