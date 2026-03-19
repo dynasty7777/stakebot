@@ -239,7 +239,11 @@ class CreateTicketView(discord.ui.View):
             title="🎫 Family Ticket",
             description=(
                 f"{member.mention}, твій тікет створено.\n\n"
-                f"Опиши свою проблему або питання одним повідомленням.\n"
+                f"Форма запиту на відкат гравця:\n\n"
+                f"1. Ваш нікнейм, статік: \n"
+                f"2. Час капту, номер квадрата: \n"
+                f"3. Статік гравця який порушив: \n"
+                f"4. Докази: \n\n"
                 f"Коли питання буде вирішене — натисни **Close Ticket**."
             ),
             color=discord.Color.green()
